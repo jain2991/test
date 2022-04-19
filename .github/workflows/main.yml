@@ -9,6 +9,12 @@ on:
         options: 
         - test
         - prod
+      name1:
+        type: choice
+        description: Api to deploy
+        options: 
+        - Mock-v1
+        - security
 jobs:
   build:
     name: "Deploy To Dev"
@@ -41,5 +47,5 @@ jobs:
         with: 
           java-version: 1.8
       - name: Build with maven  
-        working-directory: Mock-v1/
+        working-directory: ${{github.event.inputs.name1}}/
         run: mvn  install -P${{github.event.inputs.name}} -Dbearer=${{steps.auth.outputs.access_token}} -Dapigee.config.options=update
