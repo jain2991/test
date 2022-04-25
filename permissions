@@ -99,3 +99,18 @@ apigee.targetservers.delete
 apigee.targetservers.get
 apigee.targetservers.list
 apigee.targetservers.update
+
+
+keyvaluemaps          
+targetservers		Done
+resourcefiles		Done
+flowhooks	
+apiproducts		Done
+developers		Done
+apps				Done
+exportAppKeys			
+reports			Done
+references		Done
+keystores			Done
+aliases			Done
+importKeys		Done
