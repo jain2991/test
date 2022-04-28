@@ -76,7 +76,7 @@ jobs:
           service_account: 's1-679@absolute-gantry-344218.iam.gserviceaccount.com'
       - name: Fetch Current Revision
         id: fetch
-        run: "echo \"::set-output name=stable_revision::$(curl -H "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/${{github.event.inputs.name1}}/deployments" | jq '.deployments[] | select(.environment=="test") | .revision')\""
+       # run: "echo \"::set-output name=stable_revision::$(curl -H "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/${{github.event.inputs.name1}}/deployments" | jq '.deployments[] | select(.environment=="test") | .revision')\""
       - name: Undeploy Deployed Revision 
         run: |           
           curl -X DELETE --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/environments/${{github.event.inputs.name}}/apis/${{github.event.inputs.name1}}/revisions/24/deployments"
