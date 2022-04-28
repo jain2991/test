@@ -3,3 +3,76 @@ curl -X DELETE --header "Authorization: Bearer ya29.A0ARrdaM9AezBfScVTsSW1Al6je5
 curl -X DELETE --header "Authorization: Bearer ya29.A0ARrdaM9AezBfScVTsSW1Al6je567uyzkHSr2G2g0_2XX9lou_riEfn8eHvepYI5doM-7-wjqOb5dT9HB2B-TWdgrUQDy-MaI5vMvAcqhzf2P2BdjoI9WulNvCIsEejxK5738I86PglV_KNZ8tawO-RIdLMvF-6YyfNPnnOBfc_Y68qEvn0daJe3hc1xtoMLkRwVteqe71Zi034BE5wPbEB7I6xcQZDB7bxVsNZmlpo76jRgFX7WQCeDDmX0wmassK9x0sgQ" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/Mock-v1/revisions/25"
 
 curl -X POST --header "Content-Type: application/x-www-form-urlencoded" --header "Authorization: Bearer ya29.A0ARrdaM9AezBfScVTsSW1Al6je567uyzkHSr2G2g0_2XX9lou_riEfn8eHvepYI5doM-7-wjqOb5dT9HB2B-TWdgrUQDy-MaI5vMvAcqhzf2P2BdjoI9WulNvCIsEejxK5738I86PglV_KNZ8tawO-RIdLMvF-6YyfNPnnOBfc_Y68qEvn0daJe3hc1xtoMLkRwVteqe71Zi034BE5wPbEB7I6xcQZDB7bxVsNZmlpo76jRgFX7WQCeDDmX0wmassK9x0sgQ" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/environments/eval/apis/Mock-v1/revisions/24/deployments"
+
+
+stable_revision=$(curl -H "Authorization: Bearer ya29.A0ARrdaM_VcPVl56CDxPHmYx9ykOb0CJyoaYgxquC4HX6_5l97GQ1Mmxd9GXiwCzVbjY79gfH6_ezrGGemZaHgZ36npYRuDF-IJBzGQlbkGzE3Kt5IU0hb70QnUBXeYVOLSyKXaXgB7Sni2XjPCnVyPPwyriMayFrHcHsWWMpWSsMQ9CqttKA-r_bEEoFwWv3-YoG4PLTf8q6a-g_FI1xQg6Ml8t-SgQAxfbRsfuozLA3kxmVGlkE5Q0lSFwEcQAJ1Io38EJI" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/Mock-v1/deployments" | jq '.deployments[] | select(.environment=="test") | .revision')
+
+{
+  "deployments": [
+    {
+      "environment": "eval",
+      "apiProxy": "Mock-v1",
+      "revision": "24",
+      "deployStartTime": "1651066211553"
+    },
+    {
+      "environment": "test",
+      "apiProxy": "Mock-v1",
+      "revision": "10",
+      "deployStartTime": "1649935609111"
+    }
+  ]
+}
+
+
+| jq '.DATA[]  | select(.DOMAIN == "domain2") | .DOMAINID'
+
+
+{
+  "ACTION": "domain.list",
+  "DATA": [
+    {
+      "TYPE": "slave",
+      "AXFR_IPS": "none",
+      "DOMAIN": "domain1.com",
+      "TTL_SEC": 0,
+      "SOA_EMAIL": "",
+      "DOMAINID": 11111,
+      "DESCRIPTION": "",
+      "EXPIRE_SEC": 0,
+      "RETRY_SEC": 0,
+      "STATUS": 1,
+      "LPM_DISPLAYGROUP": "",
+      "REFRESH_SEC": 0
+    },
+    {
+      "TYPE": "slave",
+      "AXFR_IPS": "none",
+      "DOMAIN": "domain2.net",
+      "TTL_SEC": 0,
+      "SOA_EMAIL": "",
+      "DOMAINID": 22222,
+      "DESCRIPTION": "",
+      "EXPIRE_SEC": 0,
+      "RETRY_SEC": 0,
+      "STATUS": 1,
+      "LPM_DISPLAYGROUP": "",
+      "REFRESH_SEC": 0
+    },
+    {
+      "TYPE": "slave",
+      "AXFR_IPS": "none",
+      "DOMAIN": "domain3",
+      "TTL_SEC": 0,
+      "SOA_EMAIL": "",
+      "DOMAINID": 33333,
+      "DESCRIPTION": "",
+      "EXPIRE_SEC": 0,
+      "RETRY_SEC": 0,
+      "STATUS": 1,
+      "LPM_DISPLAYGROUP": "",
+      "REFRESH_SEC": 0
+    },
+  ],
+  "ERRORARRAY": []
+}
