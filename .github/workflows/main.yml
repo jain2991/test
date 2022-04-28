@@ -24,7 +24,8 @@ on:
         - Rollback		
 jobs:
   build:
-    name: "Build & Deploy"
+    name: "Deploy"
+    if: ${{ github.event.inputs.job-name == 'Deploy' }}
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
