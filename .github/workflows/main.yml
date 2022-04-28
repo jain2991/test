@@ -15,13 +15,13 @@ on:
         options: 
         - Mock-v1
         - security
-	  job-name:
+      job-name:
         description: 'Job id'
         required: true
-		options: 
-        - Build & Deploy
+	options: 
+	- Build & Deploy
         - Unit Test
-		- Rollback		
+	- Rollback
 jobs:
   build:
     name: "Build & Deploy"
