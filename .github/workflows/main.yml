@@ -74,8 +74,8 @@ jobs:
           activate_credentials_file: true
           workload_identity_provider: 'projects/762356276584/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
           service_account: 's1-679@absolute-gantry-344218.iam.gserviceaccount.com'
-      - name: Fetch Current Revision
-        id: fetch
+      #- name: Fetch Current Revision
+        #id: fetch
        # run: "echo \"::set-output name=stable_revision::$(curl -H "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/${{github.event.inputs.name1}}/deployments" | jq '.deployments[] | select(.environment=="test") | .revision')\""
       - name: Undeploy Deployed Revision 
         run: |           
