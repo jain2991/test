@@ -1,4 +1,5 @@
 name: Apigee-POC
+
 on:
   workflow_dispatch:
     inputs:
@@ -15,12 +16,12 @@ on:
         - Mock-v1
         - security
       job-name:
-      	type: choice
-	description: Job id
-	required: true
-	options: 
-	- Rollback
-	
+        description: 'Job id'
+        required: true
+        options: 
+        - Build & Deploy
+        - Unit Test
+        - Rollback		
 jobs:
   build:
     name: "Build & Deploy"
@@ -58,7 +59,7 @@ jobs:
   Rollback:
     name: Rollback
     if: ${{ github.event.inputs.job-name == 'Rollback' }}
-	runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       id-token: 'write'
@@ -73,13 +74,12 @@ jobs:
           activate_credentials_file: true
           workload_identity_provider: 'projects/762356276584/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
           service_account: 's1-679@absolute-gantry-344218.iam.gserviceaccount.com'
-	  - name: Fetch Current Revision
-		id: fetch
-		run: "echo \"::set-output name=stable_revision::$(curl -H "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/${{github.event.inputs.name1}}/deployments" | jq '.deployments[] | select(.environment=="test") | .revision')\""
-	  - name: Undeploy Deployed Revision 
-		run: |
-			curl -X DELETE --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/environments/${{github.event.inputs.name}}/apis/${{github.event.inputs.name1}}/revisions/24/deployments"
+      - name: Fetch_Current_Revision
+        id: fetch
+        run: "echo \"::set-output name=stable_revision::$(curl -H "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/${{github.event.inputs.name1}}/deployments" | jq '.deployments[] | select(.environment=="test") | .revision')\""
+      - name: Undeploy Deployed Revision 
+        run: |
+          curl -X DELETE --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/environments/${{github.event.inputs.name}}/apis/${{github.event.inputs.name1}}/revisions/24/deployments"
 
-#curl -X DELETE --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/${{github.event.inputs.name1}}/revisions/${{steps.fetch.outputs.stable_revision}}"
-
-			curl -X POST --header "Content-Type: application/x-www-form-urlencoded" --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/environments/${{github.event.inputs.name}}/apis/${{github.event.inputs.name1}}/revisions/23/deployments"
+	  curl -X DELETE --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/${{github.event.inputs.name1}}/revisions/${{steps.fetch.outputs.stable_revision}}"
+          curl -X POST --header "Content-Type: application/x-www-form-urlencoded" --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/environments/${{github.event.inputs.name}}/apis/${{github.event.inputs.name1}}/revisions/23/deployments" 	
