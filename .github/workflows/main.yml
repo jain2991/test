@@ -87,6 +87,6 @@ jobs:
           
           curl -X DELETE --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/${{github.event.inputs.name1}}/revisions/${{steps.fetch.outputs.current-revision}}"
           
-          curl -X POST --header "Content-Type: application/x-www-form-urlencoded" --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/environments/${{github.event.inputs.name}}/apis/${{github.event.inputs.name1}}/revisions/23/deployments"
+          curl -X POST --header "Content-Type: application/x-www-form-urlencoded" --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/environments/${{github.event.inputs.name}}/apis/${{github.event.inputs.name1}}/revisions/27/deployments"
           
      
