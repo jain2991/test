@@ -43,4 +43,4 @@ jobs:
           service_account: 's1-679@absolute-gantry-344218.iam.gserviceaccount.com'
       - name: Fetch Current Revision
         id: fetch
-        run: "echo \"::set-output name=current_revision::$(curl -H \"Authorization: Bearer${{steps.auth.outputs.access_token}}\" \"https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/Mock-v1/deployments\" | jq -r '.deployments[] | select(.environment==\"eval\") | .revision' )\""
+        run: "echo \"::set-output name=current_revision::$(curl -H \"Authorization: Bearer ${{steps.auth.outputs.access_token}}\" \"https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/Mock-v1/deployments\" | jq -r '.deployments[] | select(.environment==\"eval\") | .revision' )\""
