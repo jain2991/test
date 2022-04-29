@@ -187,7 +187,7 @@
 <!-- This is where you add the environment specific properties under various profile names -->
  <profiles>
         <profile>
-            <id>test</id>
+            <id>eval</id>
             <properties>
                 <apigee.profile>test</apigee.profile>
                 <apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl>
