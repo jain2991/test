@@ -5,17 +5,20 @@ on:
     inputs:
       name:
         type: choice
+        required: true
         description: Enviornment to deploy
         options: 
         - eval
         - test
       name1:
         type: choice
+        required: true
         description: Api to deploy
         options: 
         - Mock-v1
         - security
       job-name:
+        type: choice
         description: 'Job id'
         required: true
         options: 
