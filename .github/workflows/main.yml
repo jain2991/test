@@ -22,7 +22,7 @@ on:
         description: 'Job id'
         required: true
         options: 
-        - Build & Deploy
+        - Deploy
         - Unit Test
         - Rollback		
 jobs:
