@@ -1,1 +1,2 @@
 # test
+curl -X DELETE --header "Authorization: Bearer ya29.A0ARrdaM8tfz9hCj8Uv50e5IDPhQXGl6zNS4pYWHWrLCKt__MKauODE8F543eQWn8WioUvoYmVY6COTQn46PCZsL6X9ZolRnDDBKK_k0SVDn-Pe_ixJJHq4x4OcsFOhg_WuEiUM7xk5G4rrgMrpDAF4cZXhvbsabl1DWj8SD6a7YRhrKy3hPlLbP6pm_QXGmtrT4EBewDljof3RfKbkBiSZlArMBo5kLnZH6XWBbfJQvPjUfqsdwa_z8HCilGwKerbYMDXOMc" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/Mock-v1/revisions/26"
