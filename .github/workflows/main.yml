@@ -47,9 +47,8 @@ jobs:
       - name: Fetch Current Revision
         id: fetch
         run: "echo \"::set-output name=current-revision::$(curl -H \"Authorization: Bearer ${{steps.auth.outputs.access_token}}\" \"https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/${{github.event.inputs.name1}}/deployments\" | jq -r '.deployments[] | select(.environment==\"${{github.event.inputs.name}}\") | .revision' )\""
-      - name: Undeploy Deployed Revision 
-        run: |
-          curl -X DELETE --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/environments/${{github.event.inputs.name}}/apis/${{github.event.inputs.name1}}/revisions/${{steps.fetch.outputs.current-revision}}/deployments"
-          
-          curl -X DELETE --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/apis/${{github.event.inputs.name1}}/revisions/${{steps.fetch.outputs.current-revision}}"
-          curl -X POST --header "Content-Type: application/x-www-form-urlencoded" --header "Authorization: Bearer ${{steps.auth.outputs.access_token}}" "https://apigee.googleapis.com/v1/organizations/absolute-gantry-344218/environments/${{github.event.inputs.name}}/apis/${{github.event.inputs.name1}}/revisions/${{steps.fetch.outputs.current-revision-1}}/deployments"
+      - name: Fetch Last Revision
+        id: GetRev
+        run: "echo \"::set-output name=previous-revision::$((${{steps.fetch.outputs.current-revision}}-1))\""
+      - name: test
+        run: echo ${{steps.GetRev.outputs.previous-revision}}
