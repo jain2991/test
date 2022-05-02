@@ -9,7 +9,7 @@ on:
         description: Enviornment to deploy
         options: 
         - eval
-        - test
+        - default-test
       name1:
         type: choice
         required: true
