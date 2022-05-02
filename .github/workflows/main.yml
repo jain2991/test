@@ -19,7 +19,7 @@ on:
         - security
       RevisionToDeploy:
         description:  Stable Revision for Rollback
-        required: true
+      
       job-name:
         type: choice
         description: 'Job id'
