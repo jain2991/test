@@ -7,8 +7,8 @@ on:
         type: choice
         description: Enviornment to deploy
         options: 
-        - test
-        - prod
+        - eval
+      
       name1:
         type: choice
         description: Api to deploy
@@ -31,8 +31,8 @@ jobs:
           token_format: "access_token"
           create_credentials_file: true
           activate_credentials_file: true
-          workload_identity_provider: 'projects/762356276584/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
-          service_account: 's1-679@absolute-gantry-344218.iam.gserviceaccount.com'
+          workload_identity_provider: 'projects/388090439674/locations/global/workloadIdentityPools/gh-pool/providers/gh-provider'
+          service_account: 'gh-service-account@velvety-study-355414.iam.gserviceaccount.com'
 
     # - name: Create API bundle
      #   run: zip -r proxy.zip apiproxy
