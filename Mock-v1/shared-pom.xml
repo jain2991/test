@@ -187,12 +187,12 @@
 <!-- This is where you add the environment specific properties under various profile names -->
  <profiles>
         <profile>
-            <id>test</id>
+            <id>eval</id>
             <properties>
-                <apigee.profile>test</apigee.profile>
+                <apigee.profile>eval</apigee.profile>
                 <apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl>
                 <apigee.apiversion>v1</apigee.apiversion>
-                <apigee.org>absolute-gantry-344218</apigee.org>
+                <apigee.org>velvety-study-355414</apigee.org>
                 <apigee.env>eval</apigee.env>
                 <apigee.authtype>oauth</apigee.authtype> <!-- only option -->
                 <apigee.bearer>${bearer}</apigee.bearer> <!-- this takes precedence over service account file -->                
