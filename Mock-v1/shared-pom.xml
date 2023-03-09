@@ -192,7 +192,7 @@
                 <apigee.profile>eval</apigee.profile>
                 <apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl>
                 <apigee.apiversion>v1</apigee.apiversion>
-                <apigee.org>velvety-study-355414</apigee.org>
+                <apigee.org>positive-tuner-379508</apigee.org>
                 <apigee.env>eval</apigee.env>
                 <apigee.authtype>oauth</apigee.authtype> <!-- only option -->
                 <apigee.bearer>${bearer}</apigee.bearer> <!-- this takes precedence over service account file -->                
